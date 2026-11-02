@@ -20,14 +20,15 @@ public class CityController {
     private CityService service;
 
     @GetMapping
-    private ResponseEntity<List<CityDTO>> findAll() {
+    public ResponseEntity<List<CityDTO>> findAll() {
         List<CityDTO> result = service.findAll();
 
         return ResponseEntity.ok(result);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping
-    private ResponseEntity<CityDTO> insert(@Valid @RequestBody CityDTO dto){
+    public ResponseEntity<CityDTO> insert(@Valid @RequestBody CityDTO dto){
         dto = service.insert(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
         return ResponseEntity.created(uri).body(dto);

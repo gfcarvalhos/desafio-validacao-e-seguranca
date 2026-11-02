@@ -55,7 +55,7 @@ public class CityControllerIT {
 	}
 
 	@Test
-	public void insertShouldReturn401WhenIvalidToken() throws Exception {
+	public void insertShouldReturn401WhenInvalidToken() throws Exception {
 
 		CityDTO dto = new CityDTO(null, "Recife");
 		String jsonBody = objectMapper.writeValueAsString(dto);

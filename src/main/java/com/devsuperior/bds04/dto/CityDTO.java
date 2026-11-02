@@ -3,6 +3,7 @@ package com.devsuperior.bds04.dto;
 import java.io.Serializable;
 
 import com.devsuperior.bds04.entities.City;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 
 public class CityDTO implements Serializable {
@@ -10,7 +11,7 @@ public class CityDTO implements Serializable {
 	
 	private Long id;
 
-    @NotEmpty(message = "Nome não pode ser vazio")
+    @NotBlank(message = "Campo requerido")
 	private String name;
 	
 	public CityDTO() {
